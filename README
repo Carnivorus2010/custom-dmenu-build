@@ -5,6 +5,10 @@ This personal configuration strips away the classic utility top bar layout, intr
 
 ---
 
+Ensure you have the core X11, freetype2, and Xft development headers installed via your system package manager (e.g., pacman -S base-devel libx11 libxft libxinerama).
+
+---
+
 ## ✨ Features & Applied Patches
 
 - **Centered Layout (`center`):** Spawns `dmenu` dead center on your active monitor. It includes a custom height, width, and explicit item layout constraints so it reads more like a modern desktop command palette.
