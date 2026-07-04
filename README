@@ -1,24 +1,28 @@
-dmenu - dynamic menu
-====================
-dmenu is an efficient dynamic menu for X.
+d# dmenu - Custom Centered & Fuzzy Build
 
+An elegant, patched, and optimized X11 dynamic menu configured meticulously to blend into the `everforest_dark_hard` environment. 
+This personal configuration strips away the classic utility top bar layout, introducing a floating centered interface built for maximum keyboard efficiency.
 
-Requirements
-------------
-In order to build dmenu you need the Xlib header files.
+---
 
+## ✨ Features & Applied Patches
 
-Installation
-------------
-Edit config.mk to match your local setup (dmenu is installed into
-the /usr/local namespace by default).
+- **Centered Layout (`center`):** Spawns `dmenu` dead center on your active monitor. It includes a custom height, width, and explicit item layout constraints so it reads more like a modern desktop command palette.
+- **Fuzzy Matching (`fuzzymatch`):** Upgrades standard character-by-character prefix filtering to intuitive, non-consecutive string fuzzy matching. 
+- **Safe 3-Column Theme Matrix:** Custom configuration block rewritten to consistently hold `[Color Value, Background Value, Accent/Border Value]` mapping structure safely preventing X11 color allocation segmentation faults.
 
-Afterwards enter the following command to build and install dmenu
-(if necessary as root):
+---
 
-    make clean install
+## 🎨 The Everforest Color Blueprint
 
+The color indices (`config.def.h`) match the exact Alacritty-tested Everforest values. Text foreground colors dynamically shift when active to provide superior contrast levels against the green accent bars:
 
-Running dmenu
--------------
-See the man page for details.
+```c
+static const char *colors[SchemeLast][3] = {
+	/* fg         bg         border/alt */
+	[SchemeNorm]          = { "#d3c6aa", "#272e33", "#272e33" }, // Muted cream text on deep grey
+	[SchemeSel]           = { "#2d353b", "#a7c080", "#a7c080" }, // Dark charcoal text on soft green highlight
+	[SchemeSelHighlight]  = { "#47523a", "#a7c080", "#a7c080" }, // Deep forest-green for matches inside selection
+	[SchemeNormHighlight] = { "#a7c080", "#272e33", "#272e33" }, // Bright green for matches inside normal rows
+	[SchemeOut]           = { "#272e33", "#83c092", "#83c092" }, // Soft aqua for multi-completions
+};
